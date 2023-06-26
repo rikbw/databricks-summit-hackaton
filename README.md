@@ -1,6 +1,8 @@
-# Data + AI summit hackaton
+# SchemaSpy
 
-## The problem
+From Chaos to Clarity - Navigating Database Schemas with AI Assistance
+
+## The Problem
 
 Data lakehouses or warehouses often have a proliferation of tables, many containing similar data.
 Column names in these tables are not always clear and not documented.
