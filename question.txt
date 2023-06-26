@@ -1,11 +1,11 @@
-Q: What tables are available?
-A: There are a total of 11 tables available in the SQL database. These tables include Album, Artist, Customer, Employee, Genre, Invoice, InvoiceLine, MediaType, Playlist, PlaylistTrack, and Track. Each table contains specific information related to its name. For example, the Album table contains information about albums, while the Customer table contains information about customers. You can access and query these tables to retrieve the data you need for your analysis.
+What are all the tables in my database? Include a description of the tables.
 
-Q: What information can I find in the albums table?
-A: In the albums table, you can find a comprehensive list of all the albums in the database, including their unique ID, title, and the corresponding artist ID. This information can be used to analyze the popularity of certain artists or genres, track sales and revenue, and identify trends in album production over time. Additionally, the table may include other relevant data such as release dates, track listings, and album artwork.
+What information can I find in the album table?
 
-Q: What are the column names in the album table?
-A: In the album table, there are three columns: "AlbumId", which is a unique identifier for each album, "Title", which contains the name of the album, and "ArtistId", which is a foreign key that links each album to the artist who created it.
+What are the column names in the album table? Write a description of these columns.
 
-Q: What are the column names in the album table? Write a description of these columns.
-A: The album table has three columns: "AlbumId", "Title", and "ArtistId". "AlbumId" is a primary key that assigns a unique integer value to each album in the table. The "Title" column stores the name of the album as a string. Finally, the "ArtistId" column is a foreign key that references the "ArtistId" column in the artist table, linking each album to the artist who created it. This allows for easy querying and analysis of data related to specific artists or albums.
+What is some example data from the album table?
+
+What is some example data from the track table?
+
+What are the column names in the Produkt table? Provide a description, in English.

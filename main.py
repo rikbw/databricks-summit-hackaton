@@ -1,27 +1,10 @@
-from langchain import PromptTemplate, SQLDatabase, SQLDatabaseChain
+from langchain import SQLDatabase, SQLDatabaseChain
 from langchain.chat_models import ChatOpenAI
-from langchain.chains import LLMChain 
 from langchain import LLMChain, PromptTemplate
 from IPython.display import display, HTML
-
 import os
-os.environ["OPENAI_API_KEY"] = "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"
 
-# _DEFAULT_TEMPLATE = """Given an input question, first create a syntactically correct SQL query to run, then look at the results of the query and return the answer.
-# Use the following format:
-
-# Question: "Question here"
-# Answer: "Final answer here"
-
-# Only use the following tables:
-
-# {table_info}
-
-# Question: {input}"""
-
-# PROMPT = PromptTemplate(
-#     input_variables=["input", "table_info"], template=_DEFAULT_TEMPLATE
-# ).partial(table_info="Employee, Album, Customer")
+os.environ["OPENAI_API_KEY"] = "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"
 
 db = SQLDatabase.from_uri("sqlite:///./Chinook_Sqlite.sqlite")
 
@@ -31,7 +14,7 @@ llm = ChatOpenAI(
     verbose=True
 )
 
-db_chain = SQLDatabaseChain(llm=llm, database=db, top_k=5)
+db_chain = SQLDatabaseChain.from_llm(llm=llm, db=db, top_k=5)
 
 
 # Explain chain (adds context to response from SQL chain)
