@@ -1,5 +1,5 @@
 from langchain import PromptTemplate, SQLDatabase, SQLDatabaseChain
-from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain 
 
 import os
@@ -23,12 +23,15 @@ os.environ["OPENAI_API_KEY"] = ""
 
 db = SQLDatabase.from_uri("sqlite:///./Chinook_Sqlite.sqlite")
 
-llm = OpenAI(temperature=0, verbose=True)
+llm = ChatOpenAI(
+    temperature=0,
+    verbose=True
+)
 
 chain = SQLDatabaseChain(llm=llm, database=db)
 
 def user_typed_prompt(query):
     result = chain.run(query)
-    print(
-    result
+    print(result)
+
     
