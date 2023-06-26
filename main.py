@@ -1,26 +1,34 @@
-from langchain import PromptTemplate
+from langchain import PromptTemplate, SQLDatabase, SQLDatabaseChain
 from langchain.llms import OpenAI
 from langchain.chains import LLMChain 
 
-_DEFAULT_TEMPLATE = """Given an input question, first create a syntactically correct SQL query to run, then look at the results of the query and return the answer.
-Use the following format:
+import os
+os.environ["OPENAI_API_KEY"] = ""
 
-Question: "Question here"
-Answer: "Final answer here"
+# _DEFAULT_TEMPLATE = """Given an input question, first create a syntactically correct SQL query to run, then look at the results of the query and return the answer.
+# Use the following format:
 
-Question: {input}"""
+# Question: "Question here"
+# Answer: "Final answer here"
 
-PROMPT = PromptTemplate(
-    input_variables=["input"], template=_DEFAULT_TEMPLATE
-)
+# Only use the following tables:
 
-# db = SQLDatabase.from_uri("sqlite:///./Chinook_sqlite.db")
+# {table_info}
+
+# Question: {input}"""
+
+# PROMPT = PromptTemplate(
+#     input_variables=["input", "table_info"], template=_DEFAULT_TEMPLATE
+# ).partial(table_info="Employee, Album, Customer")
+
+db = SQLDatabase.from_uri("sqlite:///./Chinook_Sqlite.sqlite")
 
 llm = OpenAI(temperature=0, verbose=True)
 
-chain = LLMChain(llm=llm, prompt=PROMPT)
+chain = SQLDatabaseChain(llm=llm, database=db)
 
-def user_typed_prompt(prompt):
-    print("This is data about <insert table information here>!")
-    result = db_chain.run(prompmt)
+def user_typed_prompt(query):
+    result = chain.run(query)
+    print(
+    result
     
